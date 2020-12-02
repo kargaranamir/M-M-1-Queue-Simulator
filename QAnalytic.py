@@ -15,3 +15,10 @@ class analyzer:
         self.pd = 0
         self.p0 = 0
 
+    def phi(self, n):
+        if self.is_exp:
+            return np.math.factorial(n) / reduce(operator.mul, [(self.mu + (i / self.theta)) for i in range(0, n + 1)], 1)
+        else:
+            return (np.math.factorial(n)/(self.mu ** (n + 1))) \
+                   * (1 - (np.exp(-1 * self.mu * self.theta)) * sum([(((self.mu * self.theta) ** i)/np.math.factorial(i)) for i in range(0, n)]))
+
