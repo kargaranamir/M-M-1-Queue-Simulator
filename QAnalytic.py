@@ -22,3 +22,17 @@ class analyzer:
             return (np.math.factorial(n)/(self.mu ** (n + 1))) \
                    * (1 - (np.exp(-1 * self.mu * self.theta)) * sum([(((self.mu * self.theta) ** i)/np.math.factorial(i)) for i in range(0, n)]))
 
+    def run(self):
+        for i in range(0,self.size+1):
+            if i == 0:
+                the_coef = 1
+            elif i == 1:
+                the_coef = self.lambda_ / self.mu
+            else:
+                the_coef = ((self.lambda_ ** i) * self.phi(i - 1)) / np.math.factorial(i - 1)
+            self.coefficients.append(the_coef)
+
+        self.p0 = 1/sum(self.coefficients)
+        self.pb = self.p0 * self.coefficients[-1]
+        self.pd = (1 - (self.mu / self.lambda_) * (1 - self.p0)) - self.pb
+        return self.pb, self.pd
