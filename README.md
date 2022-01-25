@@ -3,8 +3,6 @@
 A M/M/1/K queue Python3 simulator that compares the simulation results (QSim.py module) against the analytics results (QAnalyic.py module).
 The queue have limited capacity K and processes may be blocked (if queue is full) or leave queue before get service (there is a deadline for each process) or get service from server.
 
-[![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
-
 ## Features
 
 - Compute probability of process blocking or leaving in a limited queue in analytic and simulation ways
